@@ -1,76 +1,396 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Bfaddressapp2 by rumski20</title>
-  </head>
+<head>
+		<title>Bayfield County - Address Application</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bfStyle.css">
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+		<script src="js/bfAddressApp.js"></script>
+		<script src="http://js.arcgis.com/3.8compact"></script>
+		<!-- <script> // what's this about?
+		//  $( document ).on( "pageinit", "#two", function( event ) {
+		//    $("#nextM").click(function (e) {
+		//      e.stopImmediatePropagation();
+		//      e.preventDefault();
+		//      execute();
+					
+		//    });
+		//  });
+		//  // what's this about?
+		//  $( document ).on( "pageinit", "#three", function( event ) {
+		//    alert("Legal Description is: "+ownName);
+		//  });
+		// </script> -->
+		<!--<script src="js/parcelQuery.js"></script>-->
 
-  <body>
-    <div id="container">
-      <div class="inner">
 
-        <header>
-          <h1>Bfaddressapp2 global gotcha</h1>
-          <h2></h2>
-        </header>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/rumski20/bfAddressApp2/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/rumski20/bfAddressApp2/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/rumski20/bfAddressApp2" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
+</head>
+<body>
 
-        <hr>
+		<!-- Start of first page: #one -->
+		<div data-role="page" id="one" data-theme="a">
+			
+				<div data-role="header">
+						<!--<h1>Bayfield County - Address Application</h1>-->
+						<div align="center">
+						<img src="images/BC_header.jpg" class="ui-btn-center" />
+						</div>
+				</div><!-- /header -->
+				
+				<div class="content-primary">
 
-        <section id="main_content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+				<form action="#" method="get">
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+					<h2>Applicant Contact Information</h2>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+					<div class="ui-field-contain">
+							 <label for="name">Name:</label>
+							 <input type="text" name="Name" id="aName" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">Mailing Address:</label>
+							 <input type="text" name="Mailing Address" id="mAddress" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">City:</label>
+							 <input type="text" name="City" id="aCity" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">State:</label>
+							 <!--<input type="text" name="state" id="state" value=""  />-->
+							 <select name="State" id="aState">
+									<option value="AL">Alabama</option>
+									<option value="AK">Alaska</option>
+									<option value="AZ">Arizona</option>
+									<option value="AR">Arkansas</option>
+									<option value="CA">California</option>
+									<option value="CO">Colorado</option>
+									<option value="CT">Connecticut</option>
+									<option value="DE">Delaware</option>
+									<option value="FL">Florida</option>
+									<option value="GA">Georgia</option>
+									<option value="HI">Hawaii</option>
+									<option value="ID">Idaho</option>
+									<option value="IL">Illinois</option>
+									<option value="IN">Indiana</option>
+									<option value="IA">Iowa</option>
+									<option value="KS">Kansas</option>
+									<option value="KY">Kentucky</option>
+									<option value="LA">Louisiana</option>
+									<option value="ME">Maine</option>
+									<option value="MD">Maryland</option>
+									<option value="MA">Massachusetts</option>
+									<option value="MI">Michigan</option>
+									<option value="MN">Minnesota</option>
+									<option value="MS">Mississippi</option>
+									<option value="MO">Missouri</option>
+									<option value="MT">Montana</option>
+									<option value="NE">Nebraska</option>
+									<option value="NV">Nevada</option>
+									<option value="NH">New Hampshire</option>
+									<option value="NJ">New Jersey</option>
+									<option value="NM">New Mexico</option>
+									<option value="NY">New York</option>
+									<option value="NC">North Carolina</option>
+									<option value="ND">North Dakota</option>
+									<option value="OH">Ohio</option>
+									<option value="OK">Oklahoma</option>
+									<option value="OR">Oregon</option>
+									<option value="PA">Pennsylvania</option>
+									<option value="RI">Rhode Island</option>
+									<option value="SC">South Carolina</option>
+									<option value="SD">South Dakota</option>
+									<option value="TN">Tennessee</option>
+									<option value="TX">Texas</option>
+									<option value="UT">Utah</option>
+									<option value="VT">Vermont</option>
+									<option value="VA">Virginia</option>
+									<option value="WA">Washington</option>
+									<option value="WV">West Virginia</option>
+									<option value="WI" selected>Wisconsin</option>
+									<option value="WY">Wyoming</option>
+							 </select>
+							 <br />
+							 <br />
+							 <label for="name">Zip:</label>
+							 <input type="text" name="Zip" id="aZip" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">Telephone:</label>
+							 <input type="text" name="Phone" id="aPhone" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">E-Mail:</label>
+							 <input type="text" name="E-mail" id="aEmail" value=""  />
+					</div>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+					<div class="ui-body ui-body-b" style="padding-left:20px">
+					<!--<fieldset class="ui-grid-a"></fieldset>-->
+							<!--<div class="ui-block-a"><button type="submit" data-theme="d">Cancel</button></div>
+							<div class="ui-block-b"><center><button type="submit" data-theme="a">Submit</button></center>href="ownerInfo.html"--> 
+							<a class="next" href="#confirmFormDialog" data-role="button" data-transition="slidefade" data-inline="true">Next</a>           
+							<div style="padding-right:20px;float:right"><!--float="left" -->
+							Step 1 of 5
+							</div>
+					</div> <!-- ui-body -->
+					
+				</div>
+			</form>
+			</div><!--/content-primary -->
+		</div><!-- /page one-->
+		
+		<!-- Start of second page: #two -->
+		<div data-role="page" id="two" data-theme="a">
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+			<div data-role="header">
+					<!--<h1>Bayfield County - Address Application</h1>-->
+					<div align="center">
+					<img src="images/BC_header.jpg" class="ui-btn-center" />
+					</div>
+			</div><!-- /header -->
+				
+			<div class="content-primary">
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+				<form action="#" method="get">
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+					<h2>Owner Contact Information</h2>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+					<label><input type="checkbox" name="checkboxO2A" data-mini="true">copy fields from applicant information</label>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+					<div class="ui-field-contain">
+							 <label for="name">Name:</label>
+							 <input type="text" name="Name" id="name" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">Mailing Address:</label>
+							 <input type="text" name="Mailing Address" id="mAddress" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">City:</label>
+							 <input type="text" name="City" id="city" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">State:</label>
+							 <!--<input type="text" name="state" id="state" value=""  />-->
+							 <select name="State" id="state">
+									<option value="AL">Alabama</option>
+									<option value="AK">Alaska</option>
+									<option value="AZ">Arizona</option>
+									<option value="AR">Arkansas</option>
+									<option value="CA">California</option>
+									<option value="CO">Colorado</option>
+									<option value="CT">Connecticut</option>
+									<option value="DE">Delaware</option>
+									<option value="FL">Florida</option>
+									<option value="GA">Georgia</option>
+									<option value="HI">Hawaii</option>
+									<option value="ID">Idaho</option>
+									<option value="IL">Illinois</option>
+									<option value="IN">Indiana</option>
+									<option value="IA">Iowa</option>
+									<option value="KS">Kansas</option>
+									<option value="KY">Kentucky</option>
+									<option value="LA">Louisiana</option>
+									<option value="ME">Maine</option>
+									<option value="MD">Maryland</option>
+									<option value="MA">Massachusetts</option>
+									<option value="MI">Michigan</option>
+									<option value="MN">Minnesota</option>
+									<option value="MS">Mississippi</option>
+									<option value="MO">Missouri</option>
+									<option value="MT">Montana</option>
+									<option value="NE">Nebraska</option>
+									<option value="NV">Nevada</option>
+									<option value="NH">New Hampshire</option>
+									<option value="NJ">New Jersey</option>
+									<option value="NM">New Mexico</option>
+									<option value="NY">New York</option>
+									<option value="NC">North Carolina</option>
+									<option value="ND">North Dakota</option>
+									<option value="OH">Ohio</option>
+									<option value="OK">Oklahoma</option>
+									<option value="OR">Oregon</option>
+									<option value="PA">Pennsylvania</option>
+									<option value="RI">Rhode Island</option>
+									<option value="SC">South Carolina</option>
+									<option value="SD">South Dakota</option>
+									<option value="TN">Tennessee</option>
+									<option value="TX">Texas</option>
+									<option value="UT">Utah</option>
+									<option value="VT">Vermont</option>
+									<option value="VA">Virginia</option>
+									<option value="WA">Washington</option>
+									<option value="WV">West Virginia</option>
+									<option value="WI" selected>Wisconsin</option>
+									<option value="WY">Wyoming</option>
+							 </select>
+							 <br />
+							 <br />
+							 <label for="name">Zip:</label>
+							 <input type="text" name="Zip" id="zip" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">Telephone:</label>
+							 <input type="text" name="Phone" id="phone" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">E-Mail:</label>
+							 <input type="text" name="E-mail" id="email" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">Tax ID No. (from tax statement):</label>
+							 <input type="text" name="parcelPIN" id="parcelPIN" value="" placeholder="ex. 33070"/>
+							 <div class="reqFld"><em>
+							 	*Required for all parcels not on tribal lands. 
+							 	Contact (715) 373-6156 for more information.
+							 </em></div>
+ 
+					</div>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+					<div class="ui-body ui-body-b" style="padding-left:20px">
+					<!--<fieldset class="ui-grid-a"></fieldset>-->
+							<!--<div class="ui-block-a"><button type="submit" data-theme="d">Cancel</button></div>
+							<div class="ui-block-b"><center><button type="submit" data-theme="a">Submit</button></center>-->
+							<a href="#one" data-role="button" data-transition="slidefade" data-direction="reverse" data-inline="true">Back</a>  
+							
+							<a class="next" href="#" data-role="button" data-transition="slidefade" data-inline="true">Next</a>           
+							
+							<div style="padding-right:20px;float:right"><!--float="left" -->
+							Step 2 of 5
+							</div>
+					</div> <!-- ui-body -->
+					
+				</form>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+			</div><!--/content-primary -->
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </section>
+			<!-- Confirm form entry -->
+			<div id="validateParcelPIN" data-role="popup" data-dialog="true" data-transition="pop" data-theme="a">
+			  <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+				<div data-role="header" style="color:red">
+					<h6>Tax ID No. Required!</h6>
+			  </div>
+			  <input type="button" id="tlButton" data-mini="true" value="Click here for Tribal Lands" data-icon="carat-r" data-iconpos="right">
+			</div>
+			
+		</div><!-- /page two -->
+		
+		<!-- Start of third page: #three -->
+		<div data-role="page" id="three" data-theme="a">
 
-        <footer>
-          Bfaddressapp2 is maintained by <a href="https://github.com/rumski20">rumski20</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+			<div data-role="header">
+					<!--<h1>Bayfield County - Address Application</h1>-->
+					<div align="center">
+					<img src="images/BC_header.jpg" class="ui-btn-center" />
+					</div>
+			</div><!-- /header -->
+				
+			<div class="content-primary">
 
-        
-      </div>
-    </div>
-  </body>
+				<form action="#" method="get">
+
+					<h2>Building Location Information</h2>
+					<em id="fieldUpdate"></em>
+
+					<div class="ui-field-contain">
+							 <label for="name">Legal Description (from deed):</label>
+							 <input type="text" name="Legal Description" id="legalDes" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">Section:</label>
+							 <input type="text" name="Section" id="section" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">Township:</label>
+							 <input type="text" name="Township" id="twp" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">Range:</label>
+							 <input type="text" name="Range" id="range" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">Town - Village:</label>
+							 <input type="text" name="Town - Village" id="townV" value=""  />
+							 <br />
+							 <br />
+							 <!--<label for="name">Tax ID No. (from tax statement):</label>
+							 <input type="text" name="parcelPIN" id="parcelPIN" value=""  />
+							 <br />
+							 <br />-->
+							 <label for="name">Road Name:</label>
+							 <input type="text" name="Road Name" id="roadName" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">I am on which side of the road:</label>
+							 <select name="Road Direction" id="roadDir" data-native-menu="false">
+								<option value="N">North</option>
+								<option value="S">South</option>
+								<option value="E">East</option>
+								<option value="W">West</option>
+							 </select>
+							 <br />
+							 <br />
+							 <label for="name">My closest neighbor's name and address is:</label>
+							 <input type="text" name="Neighbor's Address" id="nAddress" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">I am located on which side of my neighbor's driveway:</label>
+							 <select name="Driveway Direction" id="drivewayD" data-native-menu="false">
+								<option value="N">North</option>
+								<option value="S">South</option>
+								<option value="E">East</option>
+								<option value="W">West</option>
+							 </select>
+					</div>
+
+					<div class="ui-body ui-body-b" style="padding-left:20px">
+						<!--<fieldset class="ui-grid-a"></fieldset>-->
+						<!--<div class="ui-block-a"><button type="submit" data-theme="d">Cancel</button></div>
+						<div class="ui-block-b"><center><button type="submit" data-theme="a">Submit</button></center>-->
+						<a href="#two" data-role="button" data-transition="slidefade" data-direction="reverse" data-inline="true">Back</a>            
+						<a class="next" rel="external" href="mapPage.html" data-role="button" data-transition="slidefade" data-inline="true">Next</a>            
+						<div style="padding-right:20px;float:right"><!--float="left" -->
+						Step 3 of 5
+						</div>
+					</div>
+					
+				</form>
+			</div><!--/content-primary -->
+			
+		</div><!-- /page three -->
+
+		<!-- Confirm form entry -->
+		<div id="confirmFormDialog" data-role="page" data-dialog="true" data-transition="pop" data-theme="a">
+			<div data-role="header">
+				<!-- cancel button returns to previous page -->
+		    <a href="#" data-rel="back" data-icon="delete">Cancel</a>
+				<h6>Confirm Applicant Info</h6>
+				<!-- continue button goes onto the next page -->
+				<a id="continueButton" href="#" data-icon="check">Continue</a>
+		  </div>
+		  <div id="confirmDialogContent" class="ui-body ui-body-a">
+		  <!-- content (loaded programatically) will go here -->
+		  </div>
+		</div>
+
+		<!-- Confirm form entry -->
+		<div id="confirmFormDialog" data-role="page" data-dialog="true" data-transition="pop" data-theme="a">
+			<div data-role="header">
+				<!-- cancel button returns to previous page -->
+		    <a href="#" data-rel="back" data-icon="delete">Cancel</a>
+				<h6>Confirm Applicant Info</h6>
+				<!-- continue button goes onto the next page -->
+				<a id="continueButton" data-rel="external" href="#" data-icon="check">Continue</a>
+		  </div>
+		  <div id="confirmDialogContent" class="ui-body ui-body-a">
+		  <!-- content (loaded programatically) will go here -->
+		  </div>
+		</div>
+
+		
+		
+</body>
 </html>

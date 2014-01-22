@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+    <title>Bayfield County - Address Map</title>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!-- Sets whether a web application runs in full-screen mode. -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css">
+		<link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css" />
+		<link rel="stylesheet" href="css/bfMapStyle.css">
+		<script>
+			/*$(document).on("pagebeforeshow","#pagetwo",function(){
+				
+			});
+			$(document).on("mobileinit", function(){
+				initMap();
+			});*/
+		</script>
+
+    <!-- moved all the styling over to the external css file: "css/bfMapStyle.css" -->
+
+    <!-- moved all the javascript over to the external js file: "js/map.js" -->
+
+		
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+		<script src="http://js.arcgis.com/3.8compact"></script>
+    <script src="js/map.js"></script>
+
+		
+</head>
+<body>
+    <div data-role="page" id="page" data-theme="a">
+			
+				<div data-theme="a" data-role="header" data-position="fixed">
+					<h3>Bayfield County - Map</h3>
+					<!--<a href="#triangleDialog" data-rel="popup" data-theme="a" data-position-to="window" data-role="button"
+						 data-inline="true" data-transition="pop" data-icon="info" data-iconpos="notext">Soil Texture</a>-->
+					
+				</div>
+
+				<!-- content -->
+				<div id="map" class="ui-content">
+          <div id="BasemapToggle"></div>
+          <div id="LocateButton"></div>
+				</div>
+
+        <!--Navbar-->
+        <div id="footer" data-role="footer" data-position="fixed">
+          <div data-role="navbar" class="customIcons">
+            <ul>
+              <li>
+                <a id="geolocate" class="ui-icon-myiconLoc" data-icon="custom">Locate</a>
+              </li>
+              <li>
+                <a id="legend" class="ui-icon-myiconLeg" data-icon="custom" href="#legendDialog" data-rel="dialog">Legend</a>
+              </li>
+              <li>
+                <a id="basemap" class="ui-icon-myiconBas" data-icon="custom" href="#basemapDialog" data-rel="dialog">Basemap</a>
+              </li>
+              <li>
+                <a id="toc" class="ui-icon-myiconLeg" data-icon="custom" href="#tocPopup" data-rel="popup" data-position-to="window">Table of Contents</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+				<!--Legend Popup-->
+				<div data-role="popup" id="legendDialog" data-overlay-theme="a" data-theme="a" data-dismissible="false" class="ui-corner-all">
+					<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext"
+						 class="ui-btn-right">Close</a>
+
+					<div data-role="header" data-theme="a" class="ui-corner-top">
+						<h1>Legend</h1>
+					</div>
+					<div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+						<div id="legendDiv"></div>
+					</div>
+				</div><!--Legend Popup-->
+
+        <!--Table of Contents Popup-->
+        <div data-role="popup" id="tocPopup" data-overlay-theme="a" data-theme="a" data-dismissible="false" class="ui-corner-all">
+          <!-- close button -->
+          <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+          <div class="ui-bar ui-bar-a" data-theme="a" >
+            <h3>Table of Contents</h3>
+          </div>
+          <div class="ui-field-contain">
+            <fieldset data-role="controlgroup">
+              <label for="addressSiteToggle">
+                <input id="addressSiteToggle" type="checkbox" checked="true">
+                Site Address Points
+              </label>
+              <label for="addressEntToggle">
+                <input id="addressEntToggle" type="checkbox" checked="true">
+                Address Entrance Points
+              </label>
+              <label for="parcelToggle">
+                <input id="parcelToggle" type="checkbox" checked="true">
+                Bayfield Parcels
+              </label>
+            <!--<a href="#" data-role="button" data-theme="a" onclick="updateLayerVisibility();">OK</a>
+            try updating layers dynamically instead-->
+            </fieldset>
+          </div>
+        </div><!--Table of Contents Popup-->
+
+
+    </div><!-- /page -->
+</body>
+</html>

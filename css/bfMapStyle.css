@@ -1,0 +1,69 @@
+.ui-icon-myiconLoc:after {
+    background-image: url("../images/locate.png");
+    /* Make your icon fit */
+    background-size: 18px 18px;
+}
+
+.ui-icon-myiconLeg:after {
+    background-image: url("../images/legend.png");
+    /* Make your icon fit */
+    background-size: 18px 18px;
+}
+
+.ui-icon-myiconBas:after {
+    background-image: url("../images/basemaps.png");
+    /* Make your icon fit */
+    background-size: 18px 18px;
+}
+
+#legendDialog {
+	height: auto;
+	width: 250px;
+}
+
+#tocPopup {
+	height: auto;
+	width: auto;
+}
+
+html, body, #map {
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+
+.ui-content {
+	padding: 0 !important;
+  overflow:hidden;
+}
+
+#contentDiv {
+	font-size: 0.85em;
+	padding: 5px;
+}
+
+#page {
+	height: 0;
+}
+
+#BasemapToggle {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  z-index: 50;
+}
+
+#LocateButton {
+  position: absolute;
+  top: 140px;
+  left: 20px;
+  z-index: 50;
+}
+
+
+/*.ui-header .ui-title{
+    margin: 5px;
+    text-align: center;
+
+ }*/

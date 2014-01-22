@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+    <title>Bayfield County - Address Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+</head>
+<body>
+    <div data-role="page">
+			
+        <div data-role="header">
+            <!--<h1>Bayfield County - Address Application</h1>-->
+						<div align="center">
+						<img src="images/BC_header.jpg" class="ui-btn-center" />
+						</div>
+        </div><!-- /header -->
+				
+				<div class="content-primary">
+
+				<form action="#" method="get">
+
+					<h2>Building Location Information</h2>
+
+					<div data-role="fieldcontain">
+							 <label for="name">Legal Description (from deed):</label>
+							 <input type="text" name="legalDes" id="legalDes" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">Section:</label>
+							 <input type="text" name="section" id="section" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">Township:</label>
+							 <input type="text" name="twp" id="twp" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">Range:</label>
+							 <input type="text" name="range" id="range" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">Town - Village:</label>
+							 <input type="text" name="townV" id="townV" value=""  />
+							 <br />
+							 <br />
+							 <!--<label for="name">Tax ID No. (from tax statement):</label>
+							 <input type="text" name="parcelPIN" id="parcelPIN" value=""  />
+							 <br />
+							 <br />-->
+							 <label for="name">Road Name:</label>
+							 <input type="text" name="roadName" id="roadName" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">I am on which side of the road:</label>
+							 <select name="roadDir" id="roadDir" data-native-menu="false">
+								<option value="north">North</option>
+								<option value="south">South</option>
+								<option value="east">East</option>
+								<option value="west">West</option>
+							 </select>
+							 <br />
+							 <br />
+							 <label for="name">My closest neighbor's name <br />and address is:</label>
+							 <input type="text" name="nAddress" id="nAddress" value=""  />
+							 <br />
+							 <br />
+							 <label for="name">I am located on which side of my neighbor's driveway:</label>
+							 <select name="drivewayD" id="drivewayD" data-native-menu="false">
+								<option value="north">North</option>
+								<option value="south">South</option>
+								<option value="east">East</option>
+								<option value="west">West</option>
+							 </select>
+					</div>
+
+				<div class="ui-body ui-body-b" style="padding-left:20px">
+				<!--<fieldset class="ui-grid-a"></fieldset>-->
+						<!--<div class="ui-block-a"><button type="submit" data-theme="d">Cancel</button></div>
+						<div class="ui-block-b"><center><button type="submit" data-theme="a">Submit</button></center>-->
+						<a href="ownerInfo.html" data-role="button" data-transition="slidefade" data-inline="true">Back</a>	
+						<a rel="external" href="mapPage.html" data-role="button" data-transition="slidefade" data-inline="true">Next</a>						
+						<div style="padding-right:20px;float:right"><!--float="left" -->
+						Step 3 of 5
+						</div>
+						</div>
+					
+				</div>
+			</form>
+			</div><!--/content-primary -->
+				
+				<!--<div style="width:90%;text-align: center;">
+ 
+					<div data-role="fieldcontain">
+						 <label for="name">Name:</label>
+						 <input type="text" name="name" id="name" value=""  />
+					</div>
+	 
+					<center><fieldset class="ui-grid-a">
+						<div class="ui-block-b"><button type="submit" data-theme="a">Submit</button></div>
+					</fieldset></center>
+				</div>-->
+
+    </div><!-- /page -->
+</body>
+</html>
