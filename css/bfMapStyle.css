@@ -25,6 +25,11 @@
 	height: auto;
 	width: auto;
 }
+#tocPopup img {
+  display: inline;
+  float: left;
+  padding-right: 6px;
+}
 
 html, body, #map {
 	height: 100%;

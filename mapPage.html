@@ -53,7 +53,7 @@
           <div data-role="navbar" class="customIcons">
             <ul>
               <li>
-                <a id="geolocate" class="ui-icon-myiconLoc" data-icon="custom">Locate</a>
+                <a id="geolocate" data-icon="search" href="#searchPopup" data-rel="popup" data-position-to="origin">Search</a>
               </li>
               <li>
                 <a id="legend" class="ui-icon-myiconLeg" data-icon="custom" href="#legendDialog" data-rel="dialog">Legend</a>
@@ -81,8 +81,13 @@
 					</div>
 				</div><!--Legend Popup-->
 
+				<!--Search Popup-->
+				<div data-role="popup" id="searchPopup" data-overlay-theme="a" data-theme="a" class="ui-corner-all">
+					<div id="searchDiv"></div>
+				</div><!--Legend Popup-->
+
         <!--Table of Contents Popup-->
-        <div data-role="popup" id="tocPopup" data-overlay-theme="a" data-theme="a" data-dismissible="false" class="ui-corner-all">
+        <div data-role="popup" id="tocPopup" data-overlay-theme="a" data-theme="a" class="ui-corner-all">
           <!-- close button -->
           <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
           <div class="ui-bar ui-bar-a" data-theme="a" >
@@ -90,18 +95,17 @@
           </div>
           <div class="ui-field-contain">
             <fieldset data-role="controlgroup">
-              <label for="addressSiteToggle">
-                <input id="addressSiteToggle" type="checkbox" checked="true">
-                Site Address Points
-              </label>
-              <label for="addressEntToggle">
-                <input id="addressEntToggle" type="checkbox" checked="true">
-                Address Entrance Points
-              </label>
               <label for="parcelToggle">
                 <input id="parcelToggle" type="checkbox" checked="true">
                 Bayfield Parcels
               </label>
+              <input id="addressSiteToggle" type="checkbox" checked="true">
+              <label for="addressSiteToggle">Site Address Points</label>
+              <label for="addressEntToggle">
+                <input id="addressEntToggle" type="checkbox" checked="true">
+                Address Entrance Points
+              </label>
+
             <!--<a href="#" data-role="button" data-theme="a" onclick="updateLayerVisibility();">OK</a>
             try updating layers dynamically instead-->
             </fieldset>

@@ -1,7 +1,9 @@
 var map, bfBuildings, query;
 // map layers
-var bfBuildingDynamicLayer, bfParcelsDynamicLayer;
+//var bfBuildingDynamicLayer, bfParcelsDynamicLayer;
 var bfLayers = [];
+var selParcel;
+
 var parcelPIN;
 var bfServiceURL = "http://199.21.241.172/arcgis/rest/services/Bayfield/addressPts/MapServer/";
 
@@ -26,8 +28,9 @@ require([
       "esri/symbols/TextSymbol",
       "esri/renderers/SimpleRenderer",
       "esri/dijit/LocateButton",
+      "esri/dijit/Geocoder",
       "esri/dijit/BasemapToggle"],
-function (arrayUtils, Color, dom, on, parser, ready, Map, Point, Graphic, ArcGISDynamicMapServiceLayer, FeatureLayer, ImageParameters, Legend, PictureMarkerSymbol, SimpleFillSymbol, Query, LabelLayer, TextSymbol, SimpleRenderer, LocateButton, BasemapToggle) {
+function (arrayUtils, Color, dom, on, parser, ready, Map, Point, Graphic, ArcGISDynamicMapServiceLayer, FeatureLayer, ImageParameters, Legend, PictureMarkerSymbol, SimpleFillSymbol, Query, LabelLayer, TextSymbol, SimpleRenderer, LocateButton, Geocoder, BasemapToggle) {
   parser.parse();
 
   ready(function () {
@@ -49,18 +52,31 @@ function (arrayUtils, Color, dom, on, parser, ready, Map, Point, Graphic, ArcGIS
     map.setVisibility(false);  // initially hide map
     map.on("load", mapIsLoaded());
 
-    // add basemap toggle
+    // add basemap toggle widget
     var toggle = new BasemapToggle({
       map: map,
       basemap: "osm"
     }, "BasemapToggle");
     toggle.startup();
 
+    // add find user location widget
     var geoLocate = new LocateButton({
       map: map
     }, "LocateButton");
     geoLocate.startup();
+
+    // add search location widget
+    var geocoder = new Geocoder({ 
+      map: map,
+      arcgisGeocoder: {
+        placeholder: "Find a location",
+        suffix: " WI",
+        sourceCountry: "USA"
+      } 
+      }, "searchDiv");
+      geocoder.startup();
   }
+
   function mapIsLoaded () {
     // set map zoom so that osm basemap always displays with data
     $("#BasemapToggle").click( function() {
@@ -88,7 +104,7 @@ function (arrayUtils, Color, dom, on, parser, ready, Map, Point, Graphic, ArcGIS
     ///////////////////////////////////////////////////
     // SELECT PARCEL USING PARCEL PIN
     // add selected parcel layer
-    var selParcel = new FeatureLayer("http://199.21.241.172/arcgis/rest/services/Bayfield/addressPts/MapServer/0", {
+    selParcel = new FeatureLayer("http://199.21.241.172/arcgis/rest/services/Bayfield/addressPts/MapServer/0", {
         mode: FeatureLayer.MODE_SELECTION
       });
     map.addLayer(selParcel);
@@ -125,6 +141,10 @@ function (arrayUtils, Color, dom, on, parser, ready, Map, Point, Graphic, ArcGIS
     });
     // show map after parcel has been selected
     selParcelPromise.then(map.setVisibility(true));
+
+    // to be run after layers are loaded
+    map.on("layers-add-result", afterLayersAreLoaded());
+  }
 
     /*//////////////////////////////////////////////////////////////
     // LABEL LAYER
@@ -210,6 +230,10 @@ function (arrayUtils, Color, dom, on, parser, ready, Map, Point, Graphic, ArcGIS
       map.graphics.add(new Graphic(pt, symbol));
       console.dir(position);
     }*/
+  function afterLayersAreLoaded() {
+    // reorder map layers so that selected parcel is on topo
+    map.reorderLayer(selParcel, map.getLayersVisibleAtScale().length-1);
+
 
     ////////////////////////////////////////////////////
     //  TOC / LEGEND
@@ -254,16 +278,21 @@ function (arrayUtils, Color, dom, on, parser, ready, Map, Point, Graphic, ArcGIS
       } else bfParcelsDynamicLayer.setVisibility(false);
     } );*/ 
     
+
+    // add layer symbol swatches to TOC
     $.get("http://199.21.241.172/arcgis/rest/services/Bayfield/addressPts/MapServer/legend?f=pjson", function (data, status) {
       //console.log("Data: " + data + "\nStatus: " + status);
       var legendJson = JSON.parse(data);
-      console.log(legendJson);
+      //console.log(legendJson);
       $.each(legendJson.layers, function (index, value) {
-        var imgUrl = bfServiceURL + "/" + index + "/" + this.legend[0].url;
-        var imgEl = $("<img>").attr("src", imgUrl);
-        $("#tocPopup input:eq(index)").after(imgEl);
-      })
-    })
+        var imgUrl = bfServiceURL + index + "/images/" + this.legend[0].url;
+        var imgEl = $("<img>");
+        imgEl.attr("src", imgUrl);
+        //imgEl.attr("for", $("#tocPopup input:eq("+index+")"));
+        $("#tocPopup label:eq("+index+")").append(imgEl);
+       // console.log(imgUrl, imgEl);
+      });
+    });
 
   }
-})
+});
