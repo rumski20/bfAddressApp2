@@ -2,8 +2,7 @@ var map, bfBuildings, query;
 // map layers
 var bfBuildingDynamicLayer, bfParcelsDynamicLayer;
 var bfLayers = [];
-var parcelPIN = JSON.parse(localStorage.ownerInfo).parcelPIN;
-console.log("parcel pin:", parcelPIN);
+var parcelPIN;
 var bfServiceURL = "http://199.21.241.172/arcgis/rest/services/Bayfield/addressPts/MapServer/";
 
 require([
@@ -95,6 +94,10 @@ function (arrayUtils, Color, dom, on, parser, ready, Map, Point, Graphic, ArcGIS
     map.addLayer(selParcel);
     // create selection query
     var selParcelQuery = new Query();
+    // get parcel pin from index.html
+    //if (localStorage) parcelPIN = JSON.parse(localStorage.ownerInfo).parcelPIN;
+    parcelPIN = "33085";
+    console.log("parcel pin:", parcelPIN);
     selParcelQuery.where = "PRPID = " + parcelPIN;
     var selParcelPromise = selParcel.selectFeatures(selParcelQuery, FeatureLayer.SELECTION_NEW, function (features) {
         console.log("selected features: ", features);
